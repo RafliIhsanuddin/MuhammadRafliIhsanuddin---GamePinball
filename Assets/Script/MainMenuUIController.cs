@@ -10,12 +10,14 @@ public class MainMenuUIController : MonoBehaviour
 
     public Button playButton;
     public Button exitButton;
+    public Button creditsButton;
 
 
     public void Start()
     {
         playButton.onClick.AddListener(PlayGame);
         exitButton.onClick.AddListener(ExitGame);
+        creditsButton.onClick.AddListener(Credits);
     }
 
 
@@ -30,7 +32,13 @@ public class MainMenuUIController : MonoBehaviour
         SceneManager.LoadScene("Pinball_Game");
     }
 
-    
+
+    public void Credits()
+    {
+        SceneManager.LoadScene("Credit");
+    }
+
+
 
 
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class SwitchController : MonoBehaviour
 {
@@ -20,7 +21,11 @@ public class SwitchController : MonoBehaviour
 
     public float score;
 
-    public ScoreManager scoreManager;
+    //public ScoreManager scoreManager;
+
+
+    public AudioManager audioManager;
+    public VFXManager vFXManager;
 
 
     private SwitchState state;
@@ -60,6 +65,8 @@ public class SwitchController : MonoBehaviour
         {
             state = SwitchState.On;
             render.material = onMaterial;
+            audioManager.PlaySwitchOnSFX(transform.position);
+            vFXManager.PlaySwitchVFX(transform.position);
             StopAllCoroutines();
 
         }
@@ -79,6 +86,9 @@ public class SwitchController : MonoBehaviour
         if (state == SwitchState.On)
         {
             Set(false);
+
+            audioManager.PlaySwitchOffSFX(transform.position);
+            vFXManager.PlaySwitchVFX(transform.position);
         }
         else
         {
@@ -95,8 +105,10 @@ public class SwitchController : MonoBehaviour
         state = SwitchState.Blink;
         for(int i = 0; i < times; i++) {
             render.material = onMaterial;
+            audioManager.PlaySwitchOnSFX(transform.position);
             yield return new WaitForSeconds(0.5f);
             render.material = offMaterial;
+            audioManager.PlaySwitchOffSFX(transform.position);
             yield return new WaitForSeconds(0.5f);
         }
 

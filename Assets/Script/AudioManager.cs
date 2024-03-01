@@ -8,6 +8,8 @@ public class AudioManager : MonoBehaviour
 
     public AudioSource bgmAudioSource;
     public GameObject sfxAudioSource;
+    public GameObject switchSfxOnAudioSource;
+    public GameObject switchSfxOffAudioSource;
 
 
     // Start is called before the first frame update
@@ -28,6 +30,16 @@ public class AudioManager : MonoBehaviour
         GameObject.Instantiate(sfxAudioSource, spawnPosition, Quaternion.identity);
     }
 
+
+    public void PlaySwitchOnSFX(Vector3 spawnPosition)
+    {
+        GameObject.Instantiate(switchSfxOnAudioSource, spawnPosition, Quaternion.identity);
+    }
+
+    public void PlaySwitchOffSFX(Vector3 spawnPosition)
+    {
+        GameObject.Instantiate(switchSfxOffAudioSource, spawnPosition, Quaternion.identity);
+    }
 
 
 

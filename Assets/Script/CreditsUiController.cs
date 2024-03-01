@@ -4,20 +4,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class GameOverUIController : MonoBehaviour
+public class CreditsUiController : MonoBehaviour
 {
-    // Start is called before the first frame update
-
-
 
     public Button mainMenuButton;
-    public Button retryButton;
-
 
     public void Start()
     {
         mainMenuButton.onClick.AddListener(MainMenu);
-        retryButton.onClick.AddListener(RetryGame);
     }
 
 
@@ -25,13 +19,6 @@ public class GameOverUIController : MonoBehaviour
     public void MainMenu()
     {
         SceneManager.LoadScene("MainMenu");
-    }
-
-
-
-    public void RetryGame()
-    {
-        SceneManager.LoadScene("Pinball_Game");
     }
 
 
